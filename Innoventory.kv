@@ -1,0 +1,73 @@
+<FloatLay>:
+    canvas:
+        Color:
+            rgba: 0.3843, 0.7019, 0.8745, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<Img>:
+    allow_stretch: True
+    keep_ratio: False
+    
+
+<Login>:
+    name: "login"
+
+    username: username
+    password: password
+
+
+
+    FloatLay:
+        Img:
+            source:"Inno.png"
+            size_hint: 0.33,0.33
+            pos_hint: {"center_x":0.5,"top":0.99}
+            
+        Label:
+            text:"Username:"
+            font_size: (20)
+            pos_hint: {"x":0.1, "top":0.65}
+            size_hint: 0.35, 0.07
+
+        Label:
+            text:"Password:"
+            font_size: (20)
+            pos_hint: {"x":0.1, "top":0.55}
+            size_hint: 0.35,0.07
+
+        TextInput:
+            id: username
+            font_size: (20) 
+            pos_hint: {"x": 0.45 , "top":0.65}
+            size_hint: 0.4, 0.07
+            multiline: False
+            
+        TextInput:
+            id: password
+            font_size: (20)
+            pos_hint: {"x": 0.45, "top":0.55}
+            size_hint: 0.4, 0.07
+            multiline: False
+            password: True
+            
+        Button:
+            text: "Login"
+            font_size: (20)
+            pos_hint:{"x":0.2,"y":0.05}
+            size_hint: 0.6, 0.2
+
+            on_release:
+                root.login()
+                root.manager.transition.direction = "up"
+
+        Button:
+            text: "Create Account"
+            font_size: (12)
+            pos_hint:{"x":0.3,"y":0.3}
+            size_hint: 0.4, 0.1
+
+            on_release:
+                root.manager.transition.direction = "right"
+                root.createBtn()
