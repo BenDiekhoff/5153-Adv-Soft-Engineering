@@ -1,23 +1,30 @@
+WindowManager:
+    Login:
+    Homepage:
+
 <FloatLay>:
+    canvas:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source:"background.jpg"
+<GridLay>:
     canvas:
         Color:
             rgba: 0.3843, 0.7019, 0.8745, 1
         Rectangle:
             pos: self.pos
             size: self.size
-
 <Img>:
     allow_stretch: True
-    keep_ratio: False
+    keep_ratio: True
     
 
 <Login>:
     name: "login"
 
-    username: username
-    password: password
-
-
+    usernameIn: usernameIn
+    passwordIn: passwordIn
 
     FloatLay:
         Img:
@@ -38,14 +45,14 @@
             size_hint: 0.35,0.07
 
         TextInput:
-            id: username
+            id: usernameIn
             font_size: (20) 
             pos_hint: {"x": 0.45 , "top":0.65}
             size_hint: 0.4, 0.07
             multiline: False
             
         TextInput:
-            id: password
+            id: passwordIn
             font_size: (20)
             pos_hint: {"x": 0.45, "top":0.55}
             size_hint: 0.4, 0.07
@@ -60,7 +67,7 @@
 
             on_release:
                 root.login()
-                root.manager.transition.direction = "up"
+                root.manager.transition.direction = "left"
 
         Button:
             text: "Create Account"
@@ -69,5 +76,72 @@
             size_hint: 0.4, 0.1
 
             on_release:
-                root.manager.transition.direction = "right"
-                root.createBtn()
+                root.manager.transition.direction = "left"
+                root.createAcct()
+
+<Homepage>:
+    
+    name: "homepage"
+    searchPhraseIn: searchPhrase
+    FloatLay:
+        TextInput:
+            id: searchPhrase
+            font_size: 20
+            pos_hint: {"x": 0.05, "top":0.98}
+            size_hint: .8, 0.07
+            multiline: False
+
+        ImgButton:
+            source: "search2.png"
+            pos_hint: {"right":0.97,"y":0.89}   
+            size_hint: 0.1,0.1
+
+            on_release: 
+                root.search()
+                root.manager.transition.direction = "up"
+                
+        GridLayout:
+            cols:1
+            size_hint:1,.87
+      
+            GridLayout:
+                cols:2
+
+                Button:
+                    text: "Plants"
+                    on_release:
+                        category = 0
+                        root.catSearch(category)
+                Button:
+                    text: "Football"
+                    on_release:
+                        category = 1
+                        root.catSearch(category)
+                Button:
+                    text: "Users"
+                    on_release:
+                        category = 2
+                        root.catSearch(category)
+                Button:
+                    text: "Medical"
+                    on_release:
+                        category = 3
+                        root.catSearch(category)
+                Button:
+                    text: "Grocery"
+                    on_release:
+                        category = 4
+                        root.catSearch(category)
+                Button:
+                    text: "Vehicles"
+                    on_release:
+                        category = 5
+                        root.catSearch(category)
+                        
+    
+
+
+
+
+            
+        
