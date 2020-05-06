@@ -529,3 +529,6 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+pymongPractice.py
+globals.py
